@@ -250,3 +250,37 @@ header h1 span::first-letter{
 	font-family: 'Moo Lah Lah', cursive;
 	font-size:1.3em;
 }
+
+/* ~~~~~~~~~~~~ attribute selectors ~~~~~~~~~~*/
+
+/* attribute selectors select HTML elements based on one of
+their properties, like src or href 
+	a[href] targets any a tag with an href (regardless of the
+	value of that href)
+	or, by value:
+	= means matches exactly
+	^= means begins with
+	$= means ends with
+	*= means contains
+*/
+a[href*="wiki"]{
+	background-image:url(../images/wikipedia-icon.png);
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:top left;
+	padding-left:1.5em;
+}
+footer a{
+	color:white;
+}
+footer a[href$=".com"]{
+	color:#ff6a00;
+}
+
+/* ~~~~~ selection pseudo class ~~~~ */
+/* selection changes the highlight on your text...
+BUT - if you change this you will mess with accessibility settings
+*/
+p::selection{
+	background-color:#ff6a00;
+}
