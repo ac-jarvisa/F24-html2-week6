@@ -42,6 +42,15 @@
     font-style: normal;
 }
 
+/********************************
+			Custom Properties
+********************************/
+/* :root is like the root of your HTML document - it means this property is
+available to your whole CSS document (it has global scope) */
+:root{
+	--mud-brown:#542401;
+}
+
 
 /********************************
 			Main
@@ -86,8 +95,9 @@ main{
 	background-repeat:repeat;
 	/* three values means top, left-right, bottom */
 	padding:25px 45px 45px;
-	/* set the border for all sides, then override it by just changing the top */
-	border:25px solid #542401;
+	/* set the border for all sides, then override it by just changing the top 
+	var stands for variable - we're calling the custom property we set in :root, above */
+	border:25px solid var(--mud-brown);
 	border-top-width:55px;
 	border-radius:25px;
 	/* in boxshadow, the properties are:
@@ -97,4 +107,50 @@ main{
 		length (or size)
 		colour */
 	box-shadow: 5px 5px 10px black, inset 3px 3px 7px black;
+}
+
+/* ~~~~~~~~~ drop down ~~~~~~~~~~~~~~~~~ */
+nav{
+	font-size:2em;
+	/* use a negative margin to pull this element up into the border */
+	margin:-65px 0 25px;
+}
+
+/* using the direct child selector > to select only the ul that is a direct child
+of the nav */
+nav > ul{
+	display:flex;
+	justify-content:flex-end;
+}
+
+nav > ul > li{
+	padding:0 10px;
+	position:relative; /* so it will hold the absolutely positioned dropdown */
+}
+
+nav ul li ul{
+	display:none;
+}
+
+nav a{
+	color:white;
+	font-weight:bold;
+	/* remove the line from the navigation links */
+	text-decoration:none;
+}
+
+/* make the dropdown appear when you hover over the nav item */
+nav > ul > li:hover ul{
+	display:block;
+	position:absolute;
+	background-color: var(--mud-brown);
+	padding-top:10px;
+	box-shadow:3px 3px 7px black;
+}
+
+/* add some spacing for the drop-down links */
+nav ul li ul a{
+	/* line-height is defined based on the size of the font, where 1 is 100% of the
+	font size */
+	line-height:1.5;
 }
